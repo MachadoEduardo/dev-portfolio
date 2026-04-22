@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import '@/src/styles/globals.css';
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,9 @@ export const metadata: Metadata = {
   title: "Edu, The Dev",
   description: "Portfólio Profissional de Eduardo Henrique Cioli Machado",
   icons: {
-  // icon: "/icons/lvtech_logo_orange.svg",
-}};
+    // icon: "/icons/lvtech_logo_orange.svg",
+  }
+};
 
 export default function RootLayout({
   children,
@@ -29,7 +31,11 @@ export default function RootLayout({
       lang="pt-br"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>
+        <Header />
+
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
