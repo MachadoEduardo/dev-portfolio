@@ -71,14 +71,6 @@ export default function AboutMe() {
 
     const skills = useRevealRange(smoothProgress, 0.30, 0.42, 20, 0.99);
 
-    const timeline1 = useRevealRange(smoothProgress, 0.40, 0.48, 22, 0.988);
-    const timeline2 = useRevealRange(smoothProgress, 0.45, 0.53, 22, 0.988);
-    const timeline3 = useRevealRange(smoothProgress, 0.50, 0.58, 22, 0.988);
-    const timeline4 = useRevealRange(smoothProgress, 0.55, 0.63, 22, 0.988);
-    const timeline5 = useRevealRange(smoothProgress, 0.60, 0.68, 22, 0.988);
-    const timeline6 = useRevealRange(smoothProgress, 0.65, 0.73, 22, 0.988);
-    const timeline7 = useRevealRange(smoothProgress, 0.70, 0.78, 22, 0.988);
-
     const marker1 = useTimelineMarkerRange(smoothProgress, 0.42, 0.47);
     const marker2 = useTimelineMarkerRange(smoothProgress, 0.47, 0.52);
     const marker3 = useTimelineMarkerRange(smoothProgress, 0.52, 0.57);
@@ -87,15 +79,10 @@ export default function AboutMe() {
     const marker6 = useTimelineMarkerRange(smoothProgress, 0.67, 0.72);
     const marker7 = useTimelineMarkerRange(smoothProgress, 0.72, 0.77);
 
-    const timelineStyles = [
-        timeline1,
-        timeline2,
-        timeline3,
-        timeline4,
-        timeline5,
-        timeline6,
-        timeline7,
-    ];
+    const timelineStyles = timeline.map((_, index) => {
+        const base = 0.40 + index * 0.05;
+        return useRevealRange(smoothProgress, base, base + 0.08, 22, 0.988);
+    });
 
     const markerStyles = [
         marker1,
@@ -143,7 +130,7 @@ export default function AboutMe() {
                                 }}
                             >
                                 Sou <strong>Desenvolvedor Fullstack</strong> com foco em backend{" "}
-                                <strong>PHP/Laravel</strong>, com experiência em criação de APIs, 
+                                <strong>PHP/Laravel</strong>, com experiência em criação de APIs,
                                 sistemas de gerenciamento e integração de soluções orientadas a dados.
                             </motion.p>
 
@@ -154,8 +141,8 @@ export default function AboutMe() {
                                     scale: paragraph2.scale,
                                 }}
                             >
-                                Atuação profissional em ambiente corporativo com manutenção de CRMs, 
-                                análise SQL e integração de sistemas. Familiarizado com boas práticas 
+                                Atuação profissional em ambiente corporativo com manutenção de CRMs,
+                                análise SQL e integração de sistemas. Familiarizado com boas práticas
                                 de qualidade de código <strong>(Clean Code, SOLID)</strong>, versionamento com Git e ambiente Docker.
                             </motion.p>
 
@@ -166,8 +153,8 @@ export default function AboutMe() {
                                     scale: paragraph3.scale,
                                 }}
                             >
-                               Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela SENAC (2025), 
-                               atualmente trabalhando no <strong>GrupoMM.</strong>
+                                Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela SENAC (2025),
+                                atualmente trabalhando no <strong>GrupoMM.</strong>
                             </motion.p>
                         </div>
                     </div>

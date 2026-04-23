@@ -6,6 +6,10 @@
 }
 
 @theme inline {
+  --font-dmsans: var(--font-dmsans), sans-serif;
+  --font-gowun: var(--font-gowun), serif;
+  --font-spacegrot: var(--font-spacegrot), sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -32,16 +36,95 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body,
+html {
+  @apply w-full overflow-x-hidden;
+  scroll-behavior: smooth;
 }
 
 body,
 html {
   @apply w-full overflow-x-hidden;
   scroll-behavior: smooth;
+}
+
+h1 {
+  @apply
+    text-[36px] leading-10
+    sm:text-[40px] sm:leading-11
+    md:text-[42px] md:leading-11
+    lg:text-[44px] lg:leading-12
+    xl:text-[48px] xl:leading-12
+    2xl:text-[52px] 2xl:leading-13
+    3xl:text-[56px] 3xl:leading-14
+    4xl:text-[64px] 4xl:leading-16
+    5xl:text-[76px] 5xl:leading-19;
+}
+
+h2 {
+  @apply
+    text-[26px] leading-9
+    sm:text-[30px] sm:leading-10
+    md:text-[32px] md:leading-10
+    lg:text-[34px] lg:leading-11
+    xl:text-[36px] xl:leading-11
+    2xl:text-[40px] 2xl:leading-12
+    3xl:text-[44px] 3xl:leading-13
+    4xl:text-[50px] 4xl:leading-14
+    5xl:text-[56px] 5xl:leading-15;
+}
+
+h3 {
+  @apply
+    text-[22px] leading-8
+    sm:text-[24px] sm:leading-8
+    md:text-[26px] md:leading-9
+    lg:text-[26px] lg:leading-9
+    xl:text-[28px] xl:leading-9
+    2xl:text-[30px] 2xl:leading-9
+    3xl:text-[32px] 3xl:leading-10
+    4xl:text-[36px] 4xl:leading-11
+    5xl:text-[40px] 5xl:leading-12;
+}
+
+h4 {
+  @apply mb-1
+    text-[18px] leading-7
+    sm:text-[19px] sm:leading-7
+    md:text-[20px] md:leading-7
+    lg:text-[20px] lg:leading-7
+    xl:text-[22px] xl:leading-8
+    2xl:text-[22px] 2xl:leading-8
+    3xl:text-[24px] 3xl:leading-8
+    4xl:text-[26px] 4xl:leading-9
+    5xl:text-[28px] 5xl:leading-9;
+}
+
+p,
+li,
+pre,
+button {
+  @apply font-dmsans text-xsm lg:text-xs xl:text-sm 4xl:text-base;
+
+  strong {
+    @apply font-semibold;
+  }
+}
+
+pre {
+  white-space: pre-line;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width:640px) {
+  pre {
+    white-space: normal;
+  }
+}
+
+.container-page {
+  @apply mt-12 4xl:mt-14;
 }
 
 .container {
@@ -54,6 +137,10 @@ section, .container {
 
 .section-top-legend {
   @apply font-medium text-sm xl:text-base tracking-[.3rem] uppercase text-dev-secondary;
+}
+
+.section-title {
+  @apply font-spacegrot font-bold mt-4;
 }
 
 .section-about-me {

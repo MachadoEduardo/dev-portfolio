@@ -34,7 +34,7 @@ export default function Navbar({ onOpen }: LNavbarProps) {
                 })}
             </ul>
 
-            <div className="flex items-center gap-4 border-2 border-red">
+            <div className="flex items-center gap-4">
                 <a
                     href="https://www.linkedin.com/in/eduardohcm/"
                     target="_blank"
