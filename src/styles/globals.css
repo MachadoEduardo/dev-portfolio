@@ -136,11 +136,124 @@ section, .container {
 }
 
 .section-top-legend {
-  @apply font-medium text-sm xl:text-base tracking-[.3rem] uppercase text-dev-secondary;
+  @apply font-spacegrot font-medium text-sm xl:text-base tracking-[.3rem] uppercase text-dev-secondary;
 }
 
 .section-title {
   @apply font-spacegrot font-bold mt-4;
+}
+
+.dev-navbar {
+  @apply fixed z-50 h-12 4xl:h-14 w-full flex items-center mx-auto py-4 shadow-sm shadow-slate-200;
+  background: rgba(255, 255, 255, 0.95);
+  /* box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.47);
+
+  .container {
+    @apply flex items-center justify-between lg:grid lg:grid-cols-[1fr_max-content_1fr];
+  }
+
+  .navbar-menu {
+    @apply hidden md:flex flex-col md:flex-row md:items-center gap-x-6 xl:gap-x-8 4xl:gap-x-10 gap-y-6;
+
+    li, a {
+      @apply font-dmsans font-normal duration-200 p-0.5 cursor-pointer;
+    }
+  }
+
+  .navbar-actions {
+    @apply flex justify-self-end gap-4;
+
+    image {
+      @apply cursor-pointer;
+    }
+  }
+}
+
+.scroll-progress {
+  @apply fixed top-12 4xl:top-14 left-0 right-0 h-1 bg-dev-main origin-left z-50;
+}
+
+.dev-sidebar-overlay {
+  @apply fixed inset-0 z-40 bg-black/40;
+  @apply transition-opacity duration-300 ease-out;
+
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.dev-sidebar {
+  @apply fixed top-0 left-0 z-50 h-full w-48 bg-white border-r border-slate-100;
+  @apply transition-transform duration-300 ease-out;
+
+  transform: translate3d(-100%, 0, 0);
+  will-change: transform;
+
+  &.is-open {
+    transform: translate3d(0, 0, 0);
+  }
+
+  button {
+    @apply md:hidden flex h-12 w-full items-center justify-end px-6 shadow-sm shadow-slate-200 4xl:h-14;
+  }
+
+  ul {
+    @apply mt-6 flex flex-col;
+
+    li {
+      @apply px-6 py-2.5 hover:bg-slate-200;
+    }
+  }
+}
+
+.dev-button {
+  @apply
+    w-max flex items-center justify-center
+    px-4 sm:px-6 py-1.5 4xl:py-2
+    text-xs 4xl:text-sm
+    font-spacegrot font-bold
+    rounded-md 4xl:rounded-lg
+    transition-all duration-300
+    uppercase;
+}
+
+.dev-button--primary {
+  @apply
+    bg-dev-main text-white
+    border border-dev-main
+    hover:brightness-90;
+}
+
+.dev-button--secondary {
+  @apply
+    border-2 border-dev-black/80
+    text-dev-black/80
+    hover:bg-dev-black/90
+    hover:text-white
+    hover:border-dev-black/20;
+}
+
+.section-home-hero { 
+  @apply lg:h-[calc(100vh-3rem)] w-full flex justify-center;
+
+  .home-hero-banner {
+    @apply lg:h-full w-full;
+  }
+
+  picture {
+    @apply flex items-end h-full;
+  }
+
+  img {
+    @apply w-full h-auto lg:w-auto lg:h-full mx-auto;
+  }
 }
 
 .section-about-me {
