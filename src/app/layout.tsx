@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Edu, The Dev",
   description: "Portfólio Profissional de Eduardo Henrique Cioli Machado",
   icons: {
-    // icon: "/icons/lvtech_logo_orange.svg",
+    // icon: "/icons/portfolio_logo_orange.svg",
   }
 };
 
