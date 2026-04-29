@@ -6,20 +6,24 @@ import SkillsIcons from "@/src/app/components/SkillsIcons";
 
 const timeline = [
     {
+      date: "Maio 2026",
+      text: "Atuando na MMTech - Desenvolvedor Fullstack"  
+    },
+    {
         date: "Agosto 2025",
-        text: "SENAC — Bacharel em ADS",
+        text: "Graduação em Análise e Desenvolvimento de Sistemas - SENAC",
     },
     {
         date: "Outubro 2024",
-        text: "GrupoMM — Suporte em Crédito e Cobrança",
+        text: "Atuando no GrupoMM — Suporte em Crédito e Cobrança",
     },
     {
         date: "Agosto 2024",
-        text: "GrupoMM — Estagiário TI",
+        text: "Atuando no GrupoMM — Estagiário TI",
     },
     {
         date: "Fevereiro 2023",
-        text: "Curso SENAC — Análise e Desenvolvimento de Sistemas",
+        text: "Início em Análise e Desenvolvimento de Sistemas - SENAC",
     },
 ];
 
