@@ -73,8 +73,8 @@ export default function Contact() {
                 y: paragraph.y,
               }}
             >
-              Disponível para vagas, contratos e projetos freelance. Conte sobre
-              sua ideia ou oportunidade.
+              Focado em projetos atuais, mas sempre aberto a ouvir boas ideias 
+              e conectar com pessoas interessantes.
             </motion.p>
 
             <motion.div
@@ -84,10 +84,6 @@ export default function Contact() {
                 y: buttons.y,
               }}
             >
-              <Button href="#servicos" variant="primary">
-                Ver serviços
-              </Button>
-
               <Button
                 href="/documents/CV_Eduardo_Henrique.pdf"
                 variant="secondary"
@@ -149,7 +145,7 @@ export default function Contact() {
             <div>
               <div className="media-contact">
                 <Image
-                  src="/icons/mail_icon_orange.svg"
+                  src="/icons/mail_icon_blue.svg"
                   alt="E-mail"
                   width={0}
                   height={0}
@@ -182,7 +178,7 @@ export default function Contact() {
             <div>
               <div className="media-contact">
                 <Image
-                  src="/icons/linkedin_icon_orange.svg"
+                  src="/icons/linkedin_icon_blue.svg"
                   alt="LinkedIn"
                   width={0}
                   height={0}
@@ -217,7 +213,7 @@ export default function Contact() {
             <div>
               <div className="media-contact">
                 <Image
-                  src="/icons/github_icon_orange.svg"
+                  src="/icons/github_icon_blue.svg"
                   alt="Github"
                   width={0}
                   height={0}

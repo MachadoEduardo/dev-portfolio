@@ -152,7 +152,7 @@ export default function Testimonials() {
               <SwiperSlide key={item.name}>
                 <div className="testimonial-card h-full">
                   <Image
-                    src="/icons/quote_icon_orange.svg"
+                    src="/icons/quote_icon_blue.svg"
                     alt=""
                     width={0}
                     height={0}
