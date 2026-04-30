@@ -256,6 +256,10 @@ section, .container {
   }
 }
 
+.section-spotify {
+  @apply bg-slate-100 py-16 lg:py-12 4xl:py-20;
+}
+
 .section-about-me {
   @apply bg-dev-black py-16 lg:py-12 4xl:py-20;
 

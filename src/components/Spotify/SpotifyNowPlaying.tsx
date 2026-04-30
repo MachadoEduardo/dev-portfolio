@@ -23,10 +23,8 @@ export default function SpotifyNowPlaying() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-4 p-3 border border-zinc-800 rounded-xl bg-zinc-900/50 w-fit"
-    >
+  className="flex items-center gap-4 p-2 pr-4 border border-white/5 rounded-2xl bg-white/5 backdrop-blur-md shadow-2xl"
+>
       <div className="relative w-12 h-12">
         <img 
           src={data.albumImageUrl} 
@@ -43,7 +41,7 @@ export default function SpotifyNowPlaying() {
           href={data.songUrl} 
           target="_blank" 
           rel="noreferrer"
-          className="text-sm font-bold text-zinc-100 hover:underline truncate max-w-45"
+          className="text-sm font-bold text-dev-black hover:underline truncate max-w-45"
         >
           {data.title}
         </a>
