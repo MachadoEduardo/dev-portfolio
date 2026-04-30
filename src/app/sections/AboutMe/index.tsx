@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import SkillsIcons from "@/src/app/components/SkillsIcons";
+import SkillsIcons from "@/src/components/SkillsIcons";
 
 const timeline = [
     {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/src/app/components/Navigation/Navbar";
+import Navbar from "@/src/components/Navigation/Navbar";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
