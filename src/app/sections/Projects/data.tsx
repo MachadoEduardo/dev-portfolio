@@ -14,7 +14,7 @@ export const projects: Project[] = [
     name: "DRS ERP",
     description:
       "DRS (Data Resource System) by E2S Systems. ERP SaaS verticalizado para o varejo de comunicação visual, com suporte nativo a operações multi-filial e inteligência de dados. ",
-    mockupSrc: "/images/projects/DRS_ERP.png",
+    mockupSrc: "/images/projects/drs_erp.jpeg",
     mockupAlt: "DRS ERP mockup",
     techs: ["PHP/Laravel", "Vue/Nuxt", "Tailwind/PrimeVue", "Docker"],
     href: "https://github.com/E2S-Systems/DRS",
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     name: "TO DO LIST",
     description:
       " Aplicação fullstack de To Do List constrúida com Laravel, Laravel Sail, e React para gerenciamento de tarefas diárias. ",
-    mockupSrc: "/images/projects/todolist.png",
+    mockupSrc: "/images/projects/todolist.jpeg",
     mockupAlt: "TO DO LIST mockup",
     techs: ["Laravel", "React", "Laravel Sail", "Tailwind"],
     href: "https://github.com/MachadoEduardo/ToDoList",

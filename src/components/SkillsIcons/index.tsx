@@ -1,9 +1,7 @@
 "use client";
 
 const icons = [
-  { name: "HTML5", icon: "devicon-html5-plain" },
-  { name: "CSS3", icon: "devicon-css3-plain" },
-  { name: "JavaScript", icon: "devicon-javascript-plain" },
+  { name: "Python", icon: "devicon-python-plain" },
   { name: "TypeScript", icon: "devicon-typescript-plain" },
   { name: "Vue.js", icon: "devicon-vuejs-plain" },
   { name: "Nuxt.js", icon: "devicon-nuxtjs-plain" },
@@ -14,6 +12,8 @@ const icons = [
   { name: "Postgresql", icon: "devicon-postgresql-plain" },
   { name: "PHP", icon: "devicon-php-plain" },
   { name: "Laravel", icon: "devicon-laravel-plain" },
+  { name: "Docker", icon: "devicon-docker-plain" },
+  { name: "Node.js", icon: "devicon-nodejs-plain" },
 ];
 
 export default function SkillsIcons() {
