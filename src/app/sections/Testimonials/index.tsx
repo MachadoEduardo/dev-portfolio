@@ -20,8 +20,7 @@ const testimonials = [
     position: "Mid Level Software Engineer",
   },
   {
-    message:
-      "Uma peça fundamental para o sucesso do projeto.",
+    message: "Uma peça fundamental para o sucesso do projeto.",
     name: "Rafael Koteski",
     position: "Gerente de Projetos",
   },
@@ -72,7 +71,7 @@ export default function Testimonials() {
   const carousel = useRevealRange(smoothProgress, 0.1, 0.24, 16);
 
   return (
-    <section ref={sectionRef} className="section-testimonials">
+    <section id="depoimentos" ref={sectionRef} className="section-testimonials">
       <div className="container">
         <motion.p
           className="section-top-legend"

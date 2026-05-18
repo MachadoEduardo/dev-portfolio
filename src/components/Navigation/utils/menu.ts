@@ -1,7 +1,7 @@
 export const menu = [
   { name: "Início", href: "#inicio" },
   { name: "Sobre", href: "#sobre" },
-  { name: "Serviços", href: "#servicos" },
   { name: "Projetos", href: "#projetos" },
+  { name: "Depoimentos", href: "#depoimentos" },
   { name: "Contato", href: "#contato" },
 ];

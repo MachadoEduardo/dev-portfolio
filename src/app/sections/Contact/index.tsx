@@ -73,8 +73,8 @@ export default function Contact() {
                 y: paragraph.y,
               }}
             >
-              Focado em projetos atuais, mas sempre aberto a ouvir boas ideias 
-              e conectar com pessoas interessantes.
+              Focado em projetos atuais, mas sempre aberto a ouvir boas ideias e
+              conectar com pessoas interessantes.
             </motion.p>
 
             <motion.div
@@ -90,7 +90,6 @@ export default function Contact() {
                 download
               >
                 Baixar CV
-
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -187,9 +186,7 @@ export default function Contact() {
                 <p>LinkedIn</p>
               </div>
 
-              <p className="contact-info">
-                linkedin.com/in/eduardohcm/
-              </p>
+              <p className="contact-info">linkedin.com/in/eduardohcm/</p>
             </div>
           </motion.a>
 

@@ -560,10 +560,10 @@ section, .container {
 }
 
 .section-projects {
-  @apply bg-[#080808] py-16 lg:py-12 4xl:py-20 overflow-x-hidden;
+  @apply bg-[#ffffff] py-16 lg:py-12 4xl:py-20 overflow-x-hidden;
 
   .section-title {
-    @apply text-dev-white;
+    @apply text-dev-black;
   }
 
   .projects-content {
@@ -582,7 +582,7 @@ section, .container {
     }
 
     .project-slide {
-      @apply w-full grid lg:grid-cols-2 items-center gap-x-8 4xl:gap-x-12 text-dev-white py-8 px-0.5 sm:px-0;
+      @apply w-full grid lg:grid-cols-2 items-center gap-x-8 4xl:gap-x-12 text-dev-main py-8 px-0.5 sm:px-0;
 
       min-width: 0;
       overflow: hidden;
@@ -602,7 +602,7 @@ section, .container {
           @apply flex flex-wrap gap-3 lg:gap-2 4xl:gap-3;
 
           span {
-            @apply text-xsm lg:text-xs xl:text-xsm 4xl:text-sm text-dev-white/80 border border-dev-white/40 px-4 lg:px-2.5 4xl:px-4 py-0.5;
+            @apply text-xsm lg:text-xs xl:text-xsm 4xl:text-sm text-dev-black/80 border border-dev-black/40 px-4 lg:px-2.5 4xl:px-4 py-0.5;
           }
         }
 
@@ -611,7 +611,7 @@ section, .container {
         }
   
         & > p {
-          @apply text-dev-white/70 py-2 mt-0.5;
+          @apply text-dev-black/70 py-2 mt-0.5;
         }
       }
 

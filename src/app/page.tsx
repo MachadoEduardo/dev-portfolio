@@ -3,15 +3,16 @@ import AboutMe from './sections/AboutMe';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
 import Spotify from './sections/Spotify';
+import { Projects } from './sections/Projects';
 
 export default function Home() {
   return (
     <div className="home-page container-page">
       <Hero/>
-      
       <AboutMe/>
+      <Projects/>
       <Testimonials/>
-      <Spotify/>
+      {/* <Spotify/> */}
       <Contact/>
     </div>
   );
