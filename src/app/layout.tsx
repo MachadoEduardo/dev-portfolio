@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import '@/src/styles/globals.css';
+import "@/src/styles/globals.css";
 import Header from "../components/Header";
 import "devicon/devicon.min.css";
 import Footer from "../components/Footer";
@@ -19,8 +19,9 @@ export const metadata: Metadata = {
   title: "Edu, The Dev",
   description: "Portfólio Profissional de Eduardo Henrique Cioli Machado",
   icons: {
-    // icon: "/icons/portfolio_logo_orange.svg",
-  }
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +39,7 @@ export default function RootLayout({
 
         <main>{children}</main>
 
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
