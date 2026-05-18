@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { menu } from "./utils/menu";
 import Image from "next/image";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 type LNavbarProps = {
@@ -89,7 +89,7 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
         </button>
 
         <div className="dev-logo">
-          <a href="/">
+          <Link href="/">
             <Image
               src="/icons/dev_logo.svg"
               alt="Logo Portfolio"
@@ -97,7 +97,7 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
               height={0}
               className="h-9 4xl:h-10 w-auto"
             />
-          </a>
+          </Link>
         </div>
 
         <ul className="navbar-menu hidden md:flex gap-6 text-sm">

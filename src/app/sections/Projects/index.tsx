@@ -4,6 +4,14 @@ import { useRef, useCallback } from "react";
 import Image from "next/image";
 import Button from "@/src/components/Button";
 
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, A11y } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -13,8 +21,48 @@ import "swiper/css/pagination";
 
 import { projects } from "../Projects/data";
 
+function useReveal(
+  progress: ReturnType<typeof useScroll>["scrollYProgress"],
+  start: number,
+  end: number,
+  fromY = 40,
+) {
+  const shouldReduceMotion = useReducedMotion();
+
+  const opacity = useTransform(progress, [start, end], [0, 1]);
+
+  const y = useTransform(
+    progress,
+    [start, end],
+    shouldReduceMotion ? [0, 0] : [fromY, 0],
+  );
+
+  return {
+    opacity,
+    y,
+  };
+}
+
 export function Projects() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 85%", "end 70%"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.4,
+  });
+
+  const legend = useReveal(smoothProgress, 0, 0.12, 18);
+
+  const title = useReveal(smoothProgress, 0.05, 0.18, 24);
+
+  const slider = useReveal(smoothProgress, 0.12, 0.3, 40);
 
   const handlePrev = useCallback(() => {
     swiperRef.current?.slidePrev();
@@ -25,10 +73,13 @@ export function Projects() {
   }, []);
 
   return (
-    <section id="projetos" className="section-projects">
+    <section id="projetos" className="section-projects" ref={sectionRef}>
       <div className="container mx-auto">
-        <span className="section-top-legend">PROJETOS</span>
-        <div className="flex items-end justify-between">
+        <motion.span className="section-top-legend" style={legend}>
+          PROJETOS
+        </motion.span>
+
+        <motion.div className="flex items-end justify-between" style={title}>
           <h2 className="section-title text-2xl lg:text-4xl font-bold">
             O que eu andei construindo
           </h2>
@@ -38,28 +89,31 @@ export function Projects() {
               onClick={handlePrev}
               className="button-projects-swiper"
               aria-label="Previous project"
-            ><Image
-              src="/icons/chevron_left_icon_white.svg"
-              alt="Project placeholder"
-              width={40}
-              height={40}
-            /></button>
-
+            >
+              <Image
+                src="/icons/chevron_left_icon_white.svg"
+                alt="Previous project"
+                width={40}
+                height={40}
+              />
+            </button>
 
             <button
               onClick={handleNext}
               className="button-projects-swiper"
               aria-label="Next project"
-            ><Image
-              src="/icons/chevron_right_icon_white.svg"
-              alt="Project placeholder"
-              width={40}
-              height={40}
-            /></button>
+            >
+              <Image
+                src="/icons/chevron_right_icon_white.svg"
+                alt="Next project"
+                width={40}
+                height={40}
+              />
+            </button>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="projects-content">
+        <motion.div className="projects-content" style={slider}>
           <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
@@ -88,6 +142,7 @@ export function Projects() {
                       priority={project.id === projects[0].id}
                     />
                   </div>
+
                   <div className="about-project">
                     <ul
                       className="project-techs"
@@ -112,8 +167,9 @@ export function Projects() {
               </SwiperSlide>
             ))}
           </Swiper>
+
           <div className="projects-dots" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

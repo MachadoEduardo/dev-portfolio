@@ -158,7 +158,7 @@ export default function Testimonials() {
                     className="h-5 w-auto"
                   />
 
-                  <p className="testimonial-message">"{item.message}"</p>
+                  <p className="testimonial-message">{item.message}</p>
 
                   <div className="testimonial-author">
                     <p className="author-name">{item.name}</p>
