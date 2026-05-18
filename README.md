@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Eduardo Henrique — Dev Portfolio
 
-## Getting Started
+Overview
+----------------
+This repository hosts a production-ready personal portfolio built with Next.js (App Router) and TypeScript. It demonstrates modern frontend practices including responsive design, performance optimizations, accessibility considerations, and component-driven architecture.
 
-First, run the development server:
+Tech stack
+----------------
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS
+- PostCSS + Autoprefixer
+- Swiper (carousels)
+- Motion / animations
+
+Quick start
+----------------
+Prerequisites: Node.js 18+ and npm/yarn/pnpm.
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a local env file by copying the example and filling the values (required only for Spotify integration):
+
+```bash
+cp .env.example .env.local
+# set SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN
+```
+
+3. Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build & Production
+----------------
+```bash
+npm run build
+npm run start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Environment variables
+----------------
+- `SPOTIFY_CLIENT_ID` — Spotify API client id (optional; used by the now-playing integration)
+- `SPOTIFY_CLIENT_SECRET` — Spotify API client secret
+- `SPOTIFY_REFRESH_TOKEN` — Spotify refresh token
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you don't set Spotify variables, the site will still work — the now-playing API will return a safe `isPlaying: false` response.
 
-## Learn More
+Project structure
+----------------
+- `app/` — Next.js App Router pages and layout
+- `src/components/` — Reusable UI components (Header, Footer, Button, etc.)
+- `src/app/sections/` — Page sections composed by the landing page
+- `src/styles/` — Tailwind global styles and design tokens
+- `src/lib/` — Client/server utilities (Spotify integration)
 
-To learn more about Next.js, take a look at the following resources:
+Notes & troubleshooting
+----------------
+- Tailwind is configured via `tailwind.config.cjs`. If styles don't apply, ensure `postcss.config.mjs` contains `tailwindcss` + `autoprefixer` (already configured).
+- If build fails due to missing packages (e.g., `framer-motion` vs `motion`), install the expected package or align imports.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Recommended improvements
+----------------
+- Add CI workflow (lint/build/test) — provide GitHub Actions for continuous checks.
+- Add a `tailwind.config.cjs` customizing theme tokens and safelist if needed.
+- Add lightweight unit tests (React Testing Library) and accessibility checks (axe).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contact
+----------------
+Eduardo Henrique — find me on LinkedIn: https://www.linkedin.com/in/eduardohcm/
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+License
+----------------
+This repository is the author's portfolio. Use the code as reference; no license provided.
