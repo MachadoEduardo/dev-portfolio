@@ -5,6 +5,7 @@ import { menu } from "./utils/menu";
 import Image from "next/image";
 import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
+import { useActiveSection } from "./hooks/useActiveSection";
 
 type LNavbarProps = {
   onOpen: () => void;
@@ -19,7 +20,7 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
     restDelta: 0.001,
   });
 
-  const [activeSection, setActiveSection] = useState<string>("#inicio");
+  const activeSection = useActiveSection(menu);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,39 +30,6 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
 
     return () => unsubscribe();
   }, [scrollY]);
-
-  useEffect(() => {
-    const sectionIds = menu
-      .map((item) => item.href)
-      .filter((href) => href.startsWith("#"));
-
-    const sections = sectionIds
-      .map((id) => document.querySelector(id))
-      .filter(Boolean) as Element[];
-
-    if (!sections.length) {return;}
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleSections.length > 0) {
-          setActiveSection(`#${visibleSections[0].target.id}`);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -55% 0px",
-        threshold: [0.2, 0.35, 0.5, 0.65],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <motion.nav
@@ -78,7 +46,7 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
       transition={{ duration: 0.25, ease: "easeOut" }}
     >
       <div className="container">
-        <button onClick={onOpen} className="md:hidden">
+        <button type="button" onClick={onOpen} className="md:hidden">
           <Image
             src="/icons/menu_icon_black.svg"
             alt="Abrir menu lateral"
@@ -91,8 +59,8 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
         <div className="dev-logo">
           <Link href="/">
             <Image
-              src="/icons/dev_logo.svg"
-              alt="Logo Portfolio"
+              src="/icon.svg"
+              alt="Edu, The Dev"
               width={0}
               height={0}
               className="h-9 4xl:h-10 w-auto"
@@ -143,7 +111,7 @@ export default function LNavbar({ onOpen }: LNavbarProps) {
           >
             <Image
               src="/icons/github_icon_black.svg"
-              alt="Github"
+              alt="GitHub"
               width={0}
               height={0}
               className="h-5.5 4xl:h-6 w-auto cursor-pointer"

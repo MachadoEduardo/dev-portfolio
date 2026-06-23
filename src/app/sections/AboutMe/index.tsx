@@ -41,6 +41,11 @@ type RevealOptions = {
   fromScale?: number;
 };
 
+type TimelineItemData = {
+  date: string;
+  text: string;
+};
+
 function useReveal(
   progress: MotionValue<number>,
   [start, end]: [number, number],
@@ -69,6 +74,44 @@ function useReveal(
 
 function createRange(start: number, duration: number): [number, number] {
   return [start, start + duration];
+}
+
+function TimelineItem({
+  item,
+  index,
+  isLast,
+  progress,
+}: {
+  item: TimelineItemData;
+  index: number;
+  isLast: boolean;
+  progress: MotionValue<number>;
+}) {
+  const base = 0.42 + index * 0.07;
+  const itemAnimation = useReveal(progress, createRange(base, 0.08), {
+    fromY: 22,
+    fromScale: 0.988,
+  });
+  const markerAnimation = useReveal(progress, createRange(base, 0.05), {
+    fromScale: 0.6,
+  });
+
+  return (
+    <motion.li
+      className={`timeline-item ${isLast ? "pb-0!" : ""}`}
+      style={itemAnimation}
+    >
+      <div className="timeline-info">
+        <span>{item.date}</span>
+      </div>
+
+      <motion.div className="timeline-marker" style={markerAnimation} />
+
+      <div className="timeline-content">
+        <p>{item.text}</p>
+      </div>
+    </motion.li>
+  );
 }
 
 export default function AboutMe() {
@@ -115,21 +158,6 @@ export default function AboutMe() {
     fromScale: 0.99,
   });
 
-  const timelineAnimations = timeline.map((_, index) => {
-    const base = 0.42 + index * 0.07;
-
-    return {
-      item: useReveal(progress, createRange(base, 0.08), {
-        fromY: 22,
-        fromScale: 0.988,
-      }),
-
-      marker: useReveal(progress, createRange(base, 0.05), {
-        fromScale: 0.6,
-      }),
-    };
-  });
-
   return (
     <section id="sobre" ref={sectionRef} className="section-about-me">
       <div className="container">
@@ -145,31 +173,28 @@ export default function AboutMe() {
           <div className="summary-experience-container">
             <div className="summary-about-me">
               <motion.p style={paragraph1}>
-                Sou <strong>Desenvolvedor Fullstack</strong> na MM Tech, atuando
-                no squad de <strong>Inovação e Eficiência Operacional</strong>,
-                com foco em soluções utilizando{" "}
-                <strong>Inteligência Artificial.</strong> Trabalho no
-                desenvolvimento de aplicações web e integrações utilizando
-                tecnologias como{" "}
-                <strong>React, Next.js, Node.js, Python e Laravel.</strong>
+                Sou <strong>Desenvolvedor Fullstack</strong> na MM Tech, no
+                squad de <strong>Inovação e Eficiência Operacional</strong>.
+                Atuo na criação de aplicações web, automações e integrações com
+                foco em <strong>Inteligência Artificial</strong>, conectando
+                produto, operação e tecnologia para reduzir trabalho manual e
+                acelerar decisões.
               </motion.p>
 
               <motion.p style={paragraph2}>
-                Atuação profissional em ambiente corporativo com{" "}
-                <strong>
-                  integração de sistemas, automatização de processos, inserção
-                  de inteligência artificial.
-                </strong>{" "}
-                Familiarizado com boas práticas de qualidade de código{" "}
-                <strong>(Clean Code, SOLID)</strong>, versionamento com Git e
-                ambiente Docker.
+                Trabalho com{" "}
+                <strong>React, Next.js, Node.js, Python, Laravel</strong> e
+                bancos relacionais, participando desde a modelagem técnica até
+                a entrega em ambiente corporativo. Valorizo código claro,
+                integração entre sistemas, versionamento com Git e ambientes
+                reproduzíveis com Docker.
               </motion.p>
 
               <motion.p style={paragraph3}>
                 Formado em{" "}
-                <strong>Análise e Desenvolvimento de Sistemas</strong> pela
-                SENAC (2025), atualmente trabalhando na{" "}
-                <strong>MM Tech.</strong>
+                <strong>Análise e Desenvolvimento de Sistemas</strong> pelo
+                SENAC, busco construir soluções úteis para o negócio, simples
+                de manter e preparadas para evoluir.
               </motion.p>
             </div>
           </div>
@@ -185,32 +210,15 @@ export default function AboutMe() {
               <div className="row example-centered">
                 <div>
                   <ul className="timeline timeline-centered">
-                    {timeline.map((item, index) => {
-                      const animation = timelineAnimations[index];
-
-                      return (
-                        <motion.li
-                          key={item.date}
-                          className={`timeline-item ${
-                            index === timeline.length - 1 ? "pb-0!" : ""
-                          }`}
-                          style={animation.item}
-                        >
-                          <div className="timeline-info">
-                            <span>{item.date}</span>
-                          </div>
-
-                          <motion.div
-                            className="timeline-marker"
-                            style={animation.marker}
-                          />
-
-                          <div className="timeline-content">
-                            <p>{item.text}</p>
-                          </div>
-                        </motion.li>
-                      );
-                    })}
+                    {timeline.map((item, index) => (
+                      <TimelineItem
+                        key={item.date}
+                        item={item}
+                        index={index}
+                        isLast={index === timeline.length - 1}
+                        progress={progress}
+                      />
+                    ))}
                   </ul>
                 </div>
               </div>

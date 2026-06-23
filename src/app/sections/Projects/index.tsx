@@ -88,11 +88,11 @@ export function Projects() {
             <button
               onClick={handlePrev}
               className="button-projects-swiper"
-              aria-label="Previous project"
+              aria-label="Projeto anterior"
             >
               <Image
                 src="/icons/chevron_left_icon_white.svg"
-                alt="Previous project"
+                alt=""
                 width={40}
                 height={40}
               />
@@ -101,11 +101,11 @@ export function Projects() {
             <button
               onClick={handleNext}
               className="button-projects-swiper"
-              aria-label="Next project"
+              aria-label="Próximo projeto"
             >
               <Image
                 src="/icons/chevron_right_icon_white.svg"
-                alt="Next project"
+                alt=""
                 width={40}
                 height={40}
               />
@@ -146,7 +146,7 @@ export function Projects() {
                   <div className="about-project">
                     <ul
                       className="project-techs"
-                      aria-label="Technologies used"
+                      aria-label="Tecnologias utilizadas"
                     >
                       {project.techs.map((tech) => (
                         <li key={tech}>
@@ -160,7 +160,7 @@ export function Projects() {
                     <p>{project.description}</p>
 
                     <Button href={project.href} variant="secondary">
-                      Ver Projeto
+                      Ver código
                     </Button>
                   </div>
                 </article>

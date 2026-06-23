@@ -2,7 +2,6 @@ import Hero from '@/src/app/sections/Hero'
 import AboutMe from './sections/AboutMe';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
-import Spotify from './sections/Spotify';
 import { Projects } from './sections/Projects';
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
       <AboutMe/>
       <Projects/>
       <Testimonials/>
-      {/* <Spotify/> */}
       <Contact/>
     </div>
   );

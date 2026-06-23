@@ -27,7 +27,11 @@ export default function Footer() {
 
         <div className="footer-actions">
           <div className="footer-socials">
-            <a href="https://www.linkedin.com/in/eduardohcm/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/eduardohcm/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 src="/icons/linkedin_icon_white.svg"
                 alt="LinkedIn"
@@ -37,10 +41,14 @@ export default function Footer() {
               />
             </a>
 
-            <a href="https://github.com/MachadoEduardo" target="_blank">
+            <a
+              href="https://github.com/MachadoEduardo"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 src="/icons/github_icon_white.svg"
-                alt="Github"
+                alt="GitHub"
                 width={0}
                 height={0}
                 className="h-5 w-auto cursor-pointer"

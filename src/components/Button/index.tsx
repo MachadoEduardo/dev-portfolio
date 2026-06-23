@@ -16,6 +16,7 @@ export default function Button({
   download = false,
 }: ButtonProps) {
   const styles = `dev-button dev-button--${variant} ${className}`;
+  const isExternal = href?.startsWith("http");
 
   if (href) {
     return (
@@ -23,6 +24,8 @@ export default function Button({
         href={href}
         className={styles}
         download={download || undefined}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noreferrer" : undefined}
       >
         {children}
       </a>

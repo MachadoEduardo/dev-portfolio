@@ -34,17 +34,15 @@ export default function Contact() {
   const header = useReveal(smooth, 0.0, 0.15, 12);
   const paragraph = useReveal(smooth, 0.08, 0.22, 14);
   const buttons = useReveal(smooth, 0.16, 0.3, 14);
-  const image = useReveal(smooth, 0.18, 0.34, 18);
 
   const media1 = useReveal(smooth, 0.28, 0.42, 14);
   const media2 = useReveal(smooth, 0.34, 0.48, 14);
   const media3 = useReveal(smooth, 0.4, 0.54, 14);
-  const media4 = useReveal(smooth, 0.46, 0.6, 14);
 
   return (
     <section ref={sectionRef} id="contato" className="section-contact">
       <div className="contact-container container">
-        <div className="grid grid-cols-[auto_1fr]">
+        <div className="contact-intro">
           <div>
             <motion.p
               className="section-top-legend"
@@ -73,8 +71,8 @@ export default function Contact() {
                 y: paragraph.y,
               }}
             >
-              Focado em projetos atuais, mas sempre aberto a ouvir boas ideias e
-              conectar com pessoas interessantes.
+              Aberto a conversar sobre aplicações web, automações, integrações
+              e soluções com IA que conectem tecnologia a resultados práticos.
             </motion.p>
 
             <motion.div
@@ -107,26 +105,11 @@ export default function Contact() {
               </Button>
             </motion.div>
           </div>
-
-          <motion.div
-            style={{
-              opacity: image.opacity,
-            }}
-          >
-            <Image
-              src="/icons/.svg"
-              alt="Satoru Gojo acenando"
-              width={0}
-              height={0}
-              className="cat-contact-me"
-            />
-          </motion.div>
         </div>
 
         <div className="medias-container">
           <motion.a
             href="mailto:05eduardomachado@gmail.com"
-            target="_blank"
             className="email-contact"
             style={{
               opacity: media1.opacity,
@@ -160,6 +143,7 @@ export default function Contact() {
           <motion.a
             href="https://www.linkedin.com/in/eduardohcm/"
             target="_blank"
+            rel="noreferrer"
             className="linkedin-contact"
             style={{
               opacity: media2.opacity,
@@ -193,6 +177,7 @@ export default function Contact() {
           <motion.a
             href="https://www.github.com/MachadoEduardo"
             target="_blank"
+            rel="noreferrer"
             className="github-contact"
             style={{
               opacity: media3.opacity,

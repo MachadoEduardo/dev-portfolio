@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { menu } from "./utils/menu";
+import { useActiveSection } from "./hooks/useActiveSection";
 
 type MobileMenuProps = {
   open: boolean;
@@ -11,92 +11,23 @@ type MobileMenuProps = {
 };
 
 export default function LSidebar({ open, onClose }: MobileMenuProps) {
-  const [rendered, setRendered] = useState(false);
-  const [active, setActive] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("#inicio");
-
-  useEffect(() => {
-    let openTimer: ReturnType<typeof setTimeout> | undefined;
-    let closeTimer: ReturnType<typeof setTimeout> | undefined;
-
-    if (open) {
-      setRendered(true);
-
-      openTimer = setTimeout(() => {
-        setActive(true);
-      }, 10);
-    } else {
-      setActive(false);
-
-      closeTimer = setTimeout(() => {
-        setRendered(false);
-      }, 300);
-    }
-
-    return () => {
-      if (openTimer) {
-        clearTimeout(openTimer);
-      }
-
-      if (closeTimer) {
-        clearTimeout(closeTimer);
-      }
-    };
-  }, [open]);
-
-  useEffect(() => {
-    const sectionIds = menu
-      .map((item) => item.href)
-      .filter((href) => href.startsWith("#"));
-
-    const sections = sectionIds
-      .map((id) => document.querySelector(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (!sections.length) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => {
-            const aTop = Math.abs(a.boundingClientRect.top);
-            const bTop = Math.abs(b.boundingClientRect.top);
-
-            return aTop - bTop;
-          });
-
-        if (visibleSections.length > 0) {
-          setActiveSection(`#${visibleSections[0].target.id}`);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -45% 0px",
-        threshold: 0.1,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
-
-  if (!rendered) {
-    return null;
-  }
+  const activeSection = useActiveSection(menu, {
+    rootMargin: "0px 0px -45% 0px",
+    threshold: 0.1,
+  });
 
   return (
     <>
       <div
-        className={`dev-sidebar-overlay ${active ? "is-open" : ""}`}
+        className={`dev-sidebar-overlay ${open ? "is-open" : ""}`}
         onClick={onClose}
       />
 
-      <aside className={`dev-sidebar ${active ? "is-open" : ""}`}>
-        <button type="button" onClick={onClose}>
+      <aside
+        className={`dev-sidebar ${open ? "is-open" : ""}`}
+        aria-hidden={!open}
+      >
+        <button type="button" onClick={onClose} tabIndex={open ? 0 : -1}>
           <Image
             src="/icons/menu_icon_black.svg"
             alt="Fechar menu lateral"
@@ -115,6 +46,7 @@ export default function LSidebar({ open, onClose }: MobileMenuProps) {
                 <Link
                   href={item.href}
                   onClick={onClose}
+                  tabIndex={open ? 0 : -1}
                   className={`block px-0 py-2 transition-all duration-200 ${
                     isActive
                       ? "text-dev-black/95 font-semibold"
